@@ -10,3 +10,8 @@ script = ExtResource("1_5w54p")
 position = Vector2(24, 1)
 scale = Vector2(0.23226, 0.301168)
 texture = ExtResource("1_xcsm1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BulletSpawn" type="Node2D" parent="."]
+position = Vector2(57, 0)
