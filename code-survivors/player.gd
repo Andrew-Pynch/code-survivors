@@ -3,6 +3,8 @@ signal hit
 
 @export var speed = 400
 var screen_size
+var current_weapon = null
+@onready var weapon_pivot = $WeaponPivot  # We'll add this node to hold weapons
 
 func _ready():
 	# hide()
@@ -22,6 +24,10 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
+		
+		if current_weapon:
+			current_weapon.update_rotation(velocity)
+	
 	else:
 		$AnimatedSprite2D.stop()
 		
@@ -37,6 +43,20 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 		
+		
+	if Input.is_action_just_pressed("slot_1"):  # Make sure to add this input in Project Settings
+		equip_pistol()
+
+func equip_pistol():
+	# Remove current weapon if there is one
+	if current_weapon:
+		current_weapon.queue_free()
+
+	# Load and instance the pistol scene
+	var pistol_scene = preload("res://Pistol.tscn")  # You'll need to create this scene
+	current_weapon = pistol_scene.instantiate()
+	weapon_pivot.add_child(current_weapon)
+
 func _on_body_entered(body):
 	hide() # Player disappears after being hit.
 	hit.emit()

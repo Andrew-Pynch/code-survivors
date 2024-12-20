@@ -46,3 +46,5 @@ animation = &"up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4twcd")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
