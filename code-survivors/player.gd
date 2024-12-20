@@ -5,7 +5,7 @@ signal hit
 var screen_size
 
 func _ready():
-	hide()
+	# hide()
 	screen_size = get_viewport_rect().size
 
 func _process(delta):
