@@ -1,22 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ge6488djrw0o"]
+[gd_scene load_steps=4 format=3 uid="uid://ge6488djrw0o"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_psaje"]
+[ext_resource type="Texture2D" uid="uid://d0m3o44yebtw3" path="res://dodge_the_creeps_2d_assets/art/projectile2.png" id="2_vt8hw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqhk4"]
-size = Vector2(10, 10)
+size = Vector2(70.5, 68.5)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_psaje")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 10.0
-offset_bottom = 10.0
-color = Color(0.822788, 0.000606447, 0.836596, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.125, -0.125004)
+scale = Vector2(0.474324, 0.474324)
+texture = ExtResource("2_vt8hw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 5)
+position = Vector2(0.624996, -0.375004)
 shape = SubResource("RectangleShape2D_oqhk4")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(5, 5)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0.874996, -0.125004)
+scale = Vector2(3.5125, 3.375)

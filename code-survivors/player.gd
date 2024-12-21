@@ -46,6 +46,8 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("slot_1"):  # Make sure to add this input in Project Settings
 		equip_pistol()
+	if Input.is_action_just_pressed("slot_2"):
+		create_explosion()
 
 func equip_pistol():
 	# Remove current weapon if there is one
@@ -56,6 +58,15 @@ func equip_pistol():
 	var pistol_scene = preload("res://Pistol.tscn")  # You'll need to create this scene
 	current_weapon = pistol_scene.instantiate()
 	weapon_pivot.add_child(current_weapon)
+	
+	
+func create_explosion():
+	var explosion_scene = preload("res://Explosion.tscn")
+	var explosion = explosion_scene.instantiate()
+	# Place explosion at player position
+	explosion.global_position = global_position
+	# Add to the game world
+	get_tree().root.add_child(explosion)
 
 func _on_body_entered(body):
 	hide() # Player disappears after being hit.
