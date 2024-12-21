@@ -1,7 +1,7 @@
 # Bullet.gd
 extends Area2D
 
-var speed = 400
+var speed = 600
 var direction = Vector2.RIGHT  # Will be set by the gun
 
 func _process(delta):
