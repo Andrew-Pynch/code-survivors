@@ -48,3 +48,5 @@ animation = &"up"
 shape = SubResource("CapsuleShape2D_4twcd")
 
 [node name="WeaponPivot" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
