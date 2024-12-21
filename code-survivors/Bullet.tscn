@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ge6488djrw0o"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_psaje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqhk4"]
+size = Vector2(10, 10)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_psaje")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.822788, 0.000606447, 0.836596, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_oqhk4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(5, 5)
+scale = Vector2(0.5, 0.5)
