@@ -1,12 +1,41 @@
 extends RigidBody2D
 
+@export var health = 100
+@export var max_health = 100
+@export var health_bar_width = 32  # Width of the health bar
+@export var health_bar_height = 4  # Height of the health bar
+
+@onready var health_bar = $HealthBar
+@onready var damage_bar = $DamageBar
+
+var damage_number_scene = preload("res://damage_number.tscn")
+
 func _ready():
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
+	add_to_group("mobs")
+	
+	health = max_health
+	# Set up both bars with exact same size
+	damage_bar.size = Vector2(health_bar_width, health_bar_height)
+	health_bar.size = Vector2(health_bar_width, health_bar_height)
+	update_health_bar()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func take_damage(damage):
+	health -= damage
+	update_health_bar()
+	spawn_damage_number(damage)
+	if health <= 0:
+		queue_free()
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+func update_health_bar():
+	var health_percent = float(health) / max_health
+	# Only adjust the width of the green bar
+	health_bar.size.x = health_bar_width * health_percent
+
+func spawn_damage_number(damage):
+	var damage_number = damage_number_scene.instantiate()
+	damage_number.damage_value = damage
+	# Position it above the mob
+	damage_number.position = Vector2(0, -30)
+	add_child(damage_number)
