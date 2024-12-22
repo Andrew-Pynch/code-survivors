@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rb5501g86i62" path="res://Player.tscn" id="1_1s1rq"]
 [ext_resource type="Script" path="res://main.gd" id="1_8lhaf"]
 [ext_resource type="PackedScene" uid="uid://ciyutv38xls8j" path="res://Mob.tscn" id="2_6un1t"]
-[ext_resource type="PackedScene" uid="uid://ckm00sq1hexvr" path="res://HUD.tscn" id="4_fan23"]
+[ext_resource type="PackedScene" path="res://HUD.tscn" id="4_fan23"]
 
 [sub_resource type="Curve2D" id="Curve2D_jkovw"]
 _data = {
