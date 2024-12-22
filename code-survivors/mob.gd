@@ -4,11 +4,12 @@ extends RigidBody2D
 @export var max_health = 100
 @export var health_bar_width = 32  # Width of the health bar
 @export var health_bar_height = 4  # Height of the health bar
+@export var move_speed = 100  # Add movement speed variable
 
 @onready var health_bar = $HealthBar
 @onready var damage_bar = $DamageBar
-
 var damage_number_scene = preload("res://damage_number.tscn")
+var player = null  # Reference to player
 
 func _ready():
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
@@ -20,6 +21,14 @@ func _ready():
 	damage_bar.size = Vector2(health_bar_width, health_bar_height)
 	health_bar.size = Vector2(health_bar_width, health_bar_height)
 	update_health_bar()
+	
+	# Get player reference
+	player = get_tree().get_first_node_in_group("player")
+
+func _physics_process(delta):
+	if player:
+		var direction = (player.global_position - global_position).normalized()
+		linear_velocity = direction * move_speed
 
 func take_damage(damage):
 	health -= damage

@@ -9,6 +9,7 @@ var current_weapon = null
 func _ready():
 	# hide()
 	screen_size = get_viewport_rect().size
+	add_to_group("player")
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
