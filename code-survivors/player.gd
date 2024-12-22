@@ -5,10 +5,12 @@ signal hit
 var screen_size
 var current_weapon = null
 @onready var weapon_pivot = $WeaponPivot  # We'll add this node to hold weapons
+var hp = 100
 
 func _ready():
-	# hide()
+	hide()
 	screen_size = get_viewport_rect().size
+	equip_pistol()
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -44,8 +46,8 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 		
 		
-	if Input.is_action_just_pressed("slot_1"):  # Make sure to add this input in Project Settings
-		equip_pistol()
+	# if Input.is_action_just_pressed("slot_1"):  # Make sure to add this input in Project Settings
+	# 	equip_pistol()
 
 func equip_pistol():
 	# Remove current weapon if there is one
