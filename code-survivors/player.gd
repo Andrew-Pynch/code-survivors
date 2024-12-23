@@ -5,11 +5,14 @@ signal hit
 var screen_size
 var current_weapon = null
 @onready var weapon_pivot = $WeaponPivot  # We'll add this node to hold weapons
+@onready var camera = $Camera2D
+
 
 func _ready():
-	# hide()
+	camera = $Camera2D
 	screen_size = get_viewport_rect().size
 	add_to_group("player")
+	hide()
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -33,7 +36,6 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 		
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
@@ -79,3 +81,4 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	camera.make_current()

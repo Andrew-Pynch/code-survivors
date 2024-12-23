@@ -1,7 +1,7 @@
 # Bullet.gd
 extends Area2D
 
-var speed = 400
+var speed = 700
 var direction = Vector2.RIGHT
 @export var damage = 50
 
