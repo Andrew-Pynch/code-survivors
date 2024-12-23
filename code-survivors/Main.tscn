@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_8lhaf"]
 [ext_resource type="PackedScene" uid="uid://ciyutv38xls8j" path="res://Mob.tscn" id="2_6un1t"]
 [ext_resource type="Script" path="res://mob_timer.gd" id="4_e3c2w"]
-[ext_resource type="PackedScene" path="res://HUD.tscn" id="4_fan23"]
+[ext_resource type="PackedScene" uid="uid://ckm00sq1hexvr" path="res://HUD.tscn" id="4_fan23"]
 [ext_resource type="PackedScene" uid="uid://b0b4p6alavf6p" path="res://Cursed_plains.tscn" id="6_o28u7"]
 [ext_resource type="Script" path="res://vermis_filter.gd" id="7_ok5mc"]
 
