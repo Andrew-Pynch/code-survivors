@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0b4p6alavf6p"]
+
+[ext_resource type="Texture2D" uid="uid://dg162j42j2a5w" path="res://dodge_the_creeps_2d_assets/art/background.jpeg" id="1_8hyuj"]
+[ext_resource type="Script" path="res://background.gd" id="1_b2eg0"]
+
+[node name="CursedPlains" type="ParallaxBackground"]
+script = ExtResource("1_b2eg0")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2944, 3016)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(449, 668)
+texture = ExtResource("1_8hyuj")
+region_enabled = true
+region_rect = Rect2(560, 464, 2944, 3016)

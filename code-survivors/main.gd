@@ -12,6 +12,8 @@ func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$ColorRect.hide()
+	$CursedPlains.start()
 	
 	# update hud elements
 	$HUD.update_score(score)
@@ -24,7 +26,6 @@ func _on_score_timer_timeout():
 	$HUD.update_score(score)
 
 func _on_start_timer_timeout():
-	print("TEST")
 	$MobTimer.start()
 	$ScoreTimer.start()
 
