@@ -10,6 +10,10 @@ func game_over():
 
 func new_game():
 	score = 0
+	# Init gold for player and connect signals to hud
+	$Player.gold = 0
+	$Player.gold_updated.connect($HUD.update_gold)
+
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$ColorRect.hide()
@@ -50,6 +54,9 @@ func _on_mob_timer_timeout():
 	# Choose the velocity for the mob.
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
+	
+	# Connect mob's death signal to player's gold collection 
+	mob.mob_died.connect($Player.collect_gold)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)

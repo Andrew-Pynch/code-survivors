@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+signal mob_died(gold_value)
+@export var gold_value = 10
+
 @export var health = 100
 @export var max_health = 100
 @export var health_bar_width = 32  # Width of the health bar
@@ -35,6 +38,7 @@ func take_damage(damage):
 	update_health_bar()
 	spawn_damage_number(damage)
 	if health <= 0:
+		emit_signal("mob_died", gold_value)
 		queue_free()
 
 func update_health_bar():
