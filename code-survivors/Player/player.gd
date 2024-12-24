@@ -53,6 +53,8 @@ func process_movement(delta):
 			$AnimatedSprite2D.stop()
 			
 		return velocity
+	else:
+		return 0
 
 
 func _process(delta):
@@ -81,13 +83,13 @@ func equip_pistol():
 		current_weapon.queue_free()
 
 	# Load and instance the pistol scene
-	var pistol_scene = preload("res://Pistol.tscn")  # You'll need to create this scene
+	var pistol_scene = preload("res://Damageables/Pistol/Pistol.tscn")  # You'll need to create this scene
 	current_weapon = pistol_scene.instantiate()
 	weapon_pivot.add_child(current_weapon)
 	
 	
 func create_explosion():
-	var explosion_scene = preload("res://Explosion.tscn")
+	var explosion_scene = preload("res://Damageables/Explosion/Explosion.tscn")
 	var explosion = explosion_scene.instantiate()
 	# Place explosion at player position
 	explosion.global_position = global_position

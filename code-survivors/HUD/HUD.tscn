@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckm00sq1hexvr"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_n5xng"]
+[ext_resource type="Script" path="res://HUD/hud.gd" id="1_n5xng"]
 [ext_resource type="FontFile" uid="uid://bn00kvhkf3ats" path="res://dodge_the_creeps_2d_assets/fonts/Xolonium-Regular.ttf" id="2_gtypb"]
 
 [node name="HUD" type="CanvasLayer"]

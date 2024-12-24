@@ -2,7 +2,7 @@ extends ColorRect
 
 func _ready():
 	material = ShaderMaterial.new()
-	material.shader = preload("res://retro_filter.gdshader")
+	material.shader = preload("res://Shaders/retro_filter.gdshader")
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	# Make it cover the full viewport

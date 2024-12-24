@@ -11,7 +11,7 @@ signal mob_died(gold_value)
 
 @onready var health_bar = $HealthBar
 @onready var damage_bar = $DamageBar
-var damage_number_scene = preload("res://damage_number.tscn")
+var damage_number_scene = preload("res://HUD/DamageNumbers/damage_number.tscn")
 var player = null  # Reference to player
 
 func _ready():

@@ -8,7 +8,7 @@ extends Node2D
 @onready var bullet_spawn = $BulletSpawn
 
 var can_shoot = true
-var bullet_scene = preload("res://Bullet.tscn")
+var bullet_scene = preload("res://Damageables/Pistol/Bullet/Bullet.tscn")
 
 func _ready():
 	# Set up the shooting timer

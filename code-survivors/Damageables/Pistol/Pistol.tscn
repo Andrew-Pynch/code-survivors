@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dma1t6fdqvk0p"]
 
-[ext_resource type="Script" path="res://pistol.gd" id="1_5w54p"]
+[ext_resource type="Script" path="res://Damageables/Pistol/pistol.gd" id="1_5w54p"]
 [ext_resource type="Texture2D" uid="uid://byibkijj6eqq3" path="res://dodge_the_creeps_2d_assets/art/gun.png" id="1_xcsm1"]
 
 [node name="Pistol" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ciyutv38xls8j"]
 
-[ext_resource type="Script" path="res://mob.gd" id="1_gf5r1"]
+[ext_resource type="Script" path="res://Mob/mob.gd" id="1_gf5r1"]
 [ext_resource type="Texture2D" uid="uid://beamnuhtgcm7c" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_1.png" id="1_rwiu5"]
 [ext_resource type="Texture2D" uid="uid://d0tgxorsoentx" path="res://dodge_the_creeps_2d_assets/art/enemyWalking_1.png" id="1_t5k7s"]
 [ext_resource type="Texture2D" uid="uid://bq53r6s01idiy" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_2.png" id="2_0fd7a"]
