@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckm00sq1hexvr"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_n5xng"]
+[ext_resource type="Script" path="res://HUD/hud.gd" id="1_n5xng"]
 [ext_resource type="FontFile" uid="uid://bn00kvhkf3ats" path="res://dodge_the_creeps_2d_assets/fonts/Xolonium-Regular.ttf" id="2_gtypb"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -38,6 +38,18 @@ text = "Doge the creeps!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="GoldLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_gtypb")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7

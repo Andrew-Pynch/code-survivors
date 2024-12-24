@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ge6488djrw0o"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_psaje"]
+[ext_resource type="Script" path="res://Damageables/Pistol/Bullet/bullet.gd" id="1_psaje"]
 [ext_resource type="Texture2D" uid="uid://d0m3o44yebtw3" path="res://dodge_the_creeps_2d_assets/art/projectile2.png" id="2_vt8hw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqhk4"]

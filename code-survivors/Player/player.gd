@@ -1,40 +1,65 @@
 extends Area2D
 signal hit
+signal gold_updated(amount)
 
-@export var speed = 400
 var screen_size
 var current_weapon = null
+var gold = 0
+var is_dead = false
+
+@export var speed = 400
+
 @onready var weapon_pivot = $WeaponPivot  # We'll add this node to hold weapons
 @onready var camera = $Camera2D
-
 
 func _ready():
 	camera = $Camera2D
 	screen_size = get_viewport_rect().size
 	add_to_group("player")
 	hide()
+	connect_to_mobs()
+
+func connect_to_mobs():
+	var mobs = get_tree().get_nodes_in_group("mobs")
+	for mob in mobs:
+		if not mob.mob_died.is_connected(collect_gold):
+			mob.mob_died.connect(collect_gold)
+
+func collect_gold(amount):
+	gold += amount
+	gold_updated.emit(gold) # Emit the signal with the new total
+	print("Collected gold: ", amount, " Total gold:", gold)
+	
+func process_movement(delta):
+	if not is_dead:
+		var velocity = Vector2.ZERO # The player's movement vector.
+		if Input.is_action_pressed("move_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("move_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("move_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("move_up"):
+			velocity.y -= 1
+
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+			$AnimatedSprite2D.play()
+			
+			if current_weapon:
+				current_weapon.update_rotation(velocity)
+		
+		else:
+			$AnimatedSprite2D.stop()
+			
+		return velocity
+	else:
+		return 0
+
 
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+	var velocity = process_movement(delta)
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-		
-		if current_weapon:
-			current_weapon.update_rotation(velocity)
-	
-	else:
-		$AnimatedSprite2D.stop()
-		
 	position += velocity * delta
 	
 	if velocity.x != 0:
@@ -58,13 +83,13 @@ func equip_pistol():
 		current_weapon.queue_free()
 
 	# Load and instance the pistol scene
-	var pistol_scene = preload("res://Pistol.tscn")  # You'll need to create this scene
+	var pistol_scene = preload("res://Damageables/Pistol/Pistol.tscn")  # You'll need to create this scene
 	current_weapon = pistol_scene.instantiate()
 	weapon_pivot.add_child(current_weapon)
 	
 	
 func create_explosion():
-	var explosion_scene = preload("res://Explosion.tscn")
+	var explosion_scene = preload("res://Damageables/Explosion/Explosion.tscn")
 	var explosion = explosion_scene.instantiate()
 	# Place explosion at player position
 	explosion.global_position = global_position
@@ -72,8 +97,9 @@ func create_explosion():
 	get_tree().root.add_child(explosion)
 
 func _on_body_entered(body):
-	hide() # Player disappears after being hit.
+	hide() 
 	hit.emit()
+	is_dead = true
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
 	
