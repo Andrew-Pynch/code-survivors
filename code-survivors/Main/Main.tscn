@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl60lkhg1v8py"]
+[gd_scene load_steps=10 format=3 uid="uid://cl60lkhg1v8py"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_cnpjh"]
 [ext_resource type="PackedScene" uid="uid://ciyutv38xls8j" path="res://Mob/Mob.tscn" id="2_3dnpp"]
+[ext_resource type="PackedScene" path="res://Interactables/Chest/Chest.tscn" id="3_avspb"]
 [ext_resource type="PackedScene" uid="uid://rb5501g86i62" path="res://Player/Player.tscn" id="3_gotn6"]
 [ext_resource type="Script" path="res://Mob/mob_timer.gd" id="4_pcupv"]
 [ext_resource type="PackedScene" uid="uid://ckm00sq1hexvr" path="res://HUD/HUD.tscn" id="5_ukbjb"]
@@ -17,6 +18,7 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_cnpjh")
 mob_scene = ExtResource("2_3dnpp")
+chest_scene = ExtResource("3_avspb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -50,6 +52,7 @@ position = Vector2(1, 0)
 [node name="HUD" parent="." instance=ExtResource("5_ukbjb")]
 
 [node name="CursedPlains" parent="." instance=ExtResource("6_t0uag")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

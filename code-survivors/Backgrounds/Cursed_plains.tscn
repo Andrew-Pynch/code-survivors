@@ -5,17 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://dyg1hmbjxq4ow" path="res://dodge_the_creeps_2d_assets/art/FRm6ZjKXIAAb-Tz.jpeg" id="3_ok7go"]
 
 [node name="CursedPlains" type="ParallaxBackground"]
+visible = false
 script = ExtResource("1_b2eg0")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+visible = false
 motion_mirroring = Vector2(2944, 3016)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
 position = Vector2(449, 668)
 texture = ExtResource("1_8hyuj")
 region_enabled = true
 region_rect = Rect2(560, 464, 2944, 3016)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
 position = Vector2(1134, 741)
 texture = ExtResource("3_ok7go")

@@ -1,7 +1,12 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var chest_scene: PackedScene
+
 var score
+
+var chest_min_amount = 3
+var chest_max_amount = 7
 
 func game_over():
 	$ScoreTimer.stop()
@@ -18,6 +23,9 @@ func new_game():
 	$StartTimer.start()
 	$ColorRect.hide()
 	$CursedPlains.start()
+
+	# Spawn chests
+	spawn_chests()
 	
 	# update hud elements
 	$HUD.update_score(score)
@@ -61,5 +69,44 @@ func _on_mob_timer_timeout():
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
-func _ready():
-	pass
+func spawn_chests():
+	if not chest_scene:
+		print("ERROR: Chest scene not set!")
+		return
+		
+	var num_chests = randi_range(chest_min_amount, chest_max_amount)
+	print("Attempting to spawn ", num_chests, " chests")
+	
+	var spawn_radius = 500
+	var min_distance = 200
+	var spawn_center = $StartPosition.position
+	var spawned_positions = []
+	
+	for i in range(num_chests):
+		var valid_position = false
+		var new_pos = Vector2.ZERO
+		var attempts = 0
+		var max_attempts = 50
+		
+		while !valid_position and attempts < max_attempts:
+			var angle = randf() * PI * 2
+			var distance = randf_range(min_distance, spawn_radius)
+			new_pos = spawn_center + Vector2(cos(angle), sin(angle)) * distance
+			
+			valid_position = true
+			for pos in spawned_positions:
+				if new_pos.distance_to(pos) < min_distance:
+					valid_position = false
+					break
+			
+			attempts += 1
+		
+		if valid_position:
+			var chest = chest_scene.instantiate()
+			chest.position = new_pos
+			chest.z_index = 1  # Ensure it's above background
+			# Connect using proper signal handling
+			chest.connect("chest_opened", $Player.collect_gold)
+			add_child(chest)
+			spawned_positions.append(new_pos)
+			print("Spawned chest at: ", new_pos)
