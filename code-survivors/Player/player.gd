@@ -84,7 +84,12 @@ func equip_pistol():
 
 	# Load and instance the pistol scene
 	var pistol_scene = preload("res://Damageables/Pistol/Pistol.tscn")  # You'll need to create this scene
+
 	current_weapon = pistol_scene.instantiate()
+	
+	current_weapon.add_modifier("explode")
+	current_weapon.add_modifier("spiral")
+	current_weapon.add_modifier("multiply")
 	weapon_pivot.add_child(current_weapon)
 	
 	

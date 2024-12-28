@@ -17,7 +17,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$ColorRect.hide()
-	$CursedPlains.start()
+
 	
 	# update hud elements
 	$HUD.update_score(score)

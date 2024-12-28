@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rb5501g86i62" path="res://Player/Player.tscn" id="3_gotn6"]
 [ext_resource type="Script" path="res://Mob/mob_timer.gd" id="4_pcupv"]
 [ext_resource type="PackedScene" uid="uid://ckm00sq1hexvr" path="res://HUD/HUD.tscn" id="5_ukbjb"]
-[ext_resource type="PackedScene" uid="uid://b0b4p6alavf6p" path="res://Backgrounds/Cursed_plains.tscn" id="6_t0uag"]
+[ext_resource type="PackedScene" uid="uid://ph7ngk13wr0" path="res://Backgrounds/RealCursedPlains.tscn" id="7_6ghrg"]
 [ext_resource type="Script" path="res://Shaders/vermis_filter.gd" id="7_p80en"]
 
 [sub_resource type="Curve2D" id="Curve2D_jkovw"]
@@ -27,6 +27,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_gotn6")]
+position = Vector2(573, 323)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -49,8 +50,6 @@ position = Vector2(1, 0)
 
 [node name="HUD" parent="." instance=ExtResource("5_ukbjb")]
 
-[node name="CursedPlains" parent="." instance=ExtResource("6_t0uag")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
@@ -65,6 +64,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_p80en")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("7_6ghrg")]
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
