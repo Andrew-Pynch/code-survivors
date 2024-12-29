@@ -1,21 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciyutv38xls8j"]
+[gd_scene load_steps=12 format=3 uid="uid://ciyutv38xls8j"]
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_gf5r1"]
-[ext_resource type="Texture2D" uid="uid://beamnuhtgcm7c" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_1.png" id="1_rwiu5"]
-[ext_resource type="Texture2D" uid="uid://d0tgxorsoentx" path="res://dodge_the_creeps_2d_assets/art/enemyWalking_1.png" id="1_t5k7s"]
-[ext_resource type="Texture2D" uid="uid://bq53r6s01idiy" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_2.png" id="2_0fd7a"]
-[ext_resource type="Texture2D" uid="uid://uxot0je4fy01" path="res://dodge_the_creeps_2d_assets/art/enemyWalking_2.png" id="2_wbey0"]
-[ext_resource type="Texture2D" uid="uid://boqtwg5h3b3ot" path="res://dodge_the_creeps_2d_assets/art/enemySwimming_1.png" id="3_uptie"]
-[ext_resource type="Texture2D" uid="uid://d02r7kd6ieh8d" path="res://dodge_the_creeps_2d_assets/art/enemySwimming_2.png" id="4_lp2xv"]
+[ext_resource type="Texture2D" uid="uid://b5fa54cg1twt5" path="res://dodge_the_creeps_2d_assets/art/m1.png" id="2_mjwer"]
+[ext_resource type="Texture2D" uid="uid://n67xs0t6rlbk" path="res://dodge_the_creeps_2d_assets/art/m2.png" id="3_fku7f"]
+[ext_resource type="Texture2D" uid="uid://cjbh87rrqs5if" path="res://dodge_the_creeps_2d_assets/art/cr0.png" id="4_sv75n"]
+[ext_resource type="Texture2D" uid="uid://bm7y734spviqv" path="res://dodge_the_creeps_2d_assets/art/cr1.png" id="5_tjmq0"]
+[ext_resource type="Texture2D" uid="uid://c7hmtjlxyb573" path="res://dodge_the_creeps_2d_assets/art/cr2.png" id="6_f83nh"]
+[ext_resource type="Texture2D" uid="uid://bdo50f7vkfgv7" path="res://dodge_the_creeps_2d_assets/art/fly0.png" id="7_2522v"]
+[ext_resource type="Texture2D" uid="uid://uuq57wfo2ys" path="res://dodge_the_creeps_2d_assets/art/fly1.png" id="8_mkm4k"]
+[ext_resource type="Texture2D" uid="uid://cnupuc8ij1c34" path="res://dodge_the_creeps_2d_assets/art/fly2.png" id="9_xhh35"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5cm1s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rwiu5")
+"texture": ExtResource("2_mjwer")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_0fd7a")
+"texture": ExtResource("3_fku7f")
 }],
 "loop": true,
 "name": &"fly",
@@ -23,10 +25,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_uptie")
+"texture": ExtResource("4_sv75n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_lp2xv")
+"texture": ExtResource("5_tjmq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f83nh")
 }],
 "loop": true,
 "name": &"swim",
@@ -34,10 +39,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t5k7s")
+"texture": ExtResource("7_2522v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_wbey0")
+"texture": ExtResource("8_mkm4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xhh35")
 }],
 "loop": true,
 "name": &"walk",
@@ -56,7 +64,7 @@ script = ExtResource("1_gf5r1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_5cm1s")
-animation = &"fly"
+animation = &"walk"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

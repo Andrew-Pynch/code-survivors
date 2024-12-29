@@ -53,10 +53,8 @@ position = Vector2(1, 0)
 [node name="HUD" parent="." instance=ExtResource("5_ukbjb")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VermisFilter" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

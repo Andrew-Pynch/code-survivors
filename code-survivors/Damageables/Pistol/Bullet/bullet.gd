@@ -1,6 +1,6 @@
 extends BaseProjectile
 
-@export var damage = 50
+@export var damage = 25
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -14,7 +14,7 @@ func _ready():
 				"death": death_modifiers.append(child)
 			child.initialize(self)
 
-func _process(delta):
+func _physics_process(delta):
 	# Apply movement modifiers
 	var modified_direction = direction
 	var modified_speed = speed

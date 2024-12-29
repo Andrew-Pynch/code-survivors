@@ -13,4 +13,4 @@ func on_kill(target):
 	explosion.global_position = target.global_position
 	explosion.damage = explosion_damage
 	explosion.get_node("CollisionShape2D").shape.radius = explosion_radius
-	projectile.get_tree().root.add_child(explosion)
+	projectile.get_tree().root.call_deferred("add_child", explosion)

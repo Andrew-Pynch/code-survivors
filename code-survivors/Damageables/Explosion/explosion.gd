@@ -10,8 +10,9 @@ var time_alive = 0
 
 
 func _ready():
+	$AnimatedSprite2D.animation = "explode"
+	$AnimatedSprite2D.play()
 	# Start playing animation if you have one
-	$Sprite2D.show()
 	body_entered.connect(_on_body_entered)
 	
 func _process(delta):

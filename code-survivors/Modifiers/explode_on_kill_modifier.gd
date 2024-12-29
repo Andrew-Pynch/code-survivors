@@ -28,7 +28,3 @@ func _create_explosion(target):
 	
 	# Set the collision shape radius after adding to scene tree
 	explosion.call_deferred("_set_explosion_radius", explosion_radius)
-
-# Add this method to Explosion.gd
-# func _set_explosion_radius(radius: float):
-#     $CollisionShape2D.shape.radius = radius
