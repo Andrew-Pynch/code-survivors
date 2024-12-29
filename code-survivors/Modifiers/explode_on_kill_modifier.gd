@@ -8,9 +8,27 @@ func _init():
 	modifier_type = "death"
 
 func on_kill(target):
+	# Schedule the explosion creation for the next frame
+	call_deferred("_create_explosion", target)
+
+func _create_explosion(target):
+	# Check if target is still valid
+	if !is_instance_valid(target):
+		return
+		
 	var explosion_scene = preload("res://Damageables/Explosion/Explosion.tscn")
 	var explosion = explosion_scene.instantiate()
+	
+	# Set initial properties
 	explosion.global_position = target.global_position
 	explosion.damage = explosion_damage
-	explosion.get_node("CollisionShape2D").shape.radius = explosion_radius
-	projectile.get_tree().root.add_child(explosion)
+	
+	# Add explosion to scene tree
+	projectile.get_tree().root.call_deferred("add_child", explosion)
+	
+	# Set the collision shape radius after adding to scene tree
+	explosion.call_deferred("_set_explosion_radius", explosion_radius)
+
+# Add this method to Explosion.gd
+# func _set_explosion_radius(radius: float):
+#     $CollisionShape2D.shape.radius = radius
