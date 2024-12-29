@@ -102,11 +102,13 @@ func create_explosion():
 	get_tree().root.add_child(explosion)
 
 func _on_body_entered(body):
-	hide() 
-	hit.emit()
-	is_dead = true
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	# only process hit if its a mob
+	if body.is_in_group("mobs"):
+		hide() 
+		hit.emit()
+		is_dead = true
+		# Must be deferred as we can't change physics properties on a physics callback.
+		$CollisionShape2D.set_deferred("disabled", true)
 	
 func start(pos):
 	position = pos

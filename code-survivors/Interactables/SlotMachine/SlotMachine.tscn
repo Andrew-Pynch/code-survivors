@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddu2ysve37610"]
+
+[ext_resource type="Script" path="res://Interactables/SlotMachine/slot_machine.gd" id="1_abcde"]
+[ext_resource type="Texture2D" uid="uid://cj1sv6kwnkaxp" path="res://Interactables/SlotMachine/slot_machine_sprite.png" id="2_hav07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig2qv"]
+size = Vector2(32, 31)
+
+[node name="SlotMachine" type="StaticBody2D"]
+script = ExtResource("1_abcde")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hav07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ig2qv")

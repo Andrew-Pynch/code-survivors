@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl60lkhg1v8py"]
+[gd_scene load_steps=10 format=3 uid="uid://cl60lkhg1v8py"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_cnpjh"]
 [ext_resource type="PackedScene" uid="uid://ciyutv38xls8j" path="res://Mob/Mob.tscn" id="2_3dnpp"]
 [ext_resource type="PackedScene" uid="uid://rb5501g86i62" path="res://Player/Player.tscn" id="3_gotn6"]
+[ext_resource type="PackedScene" uid="uid://ddu2ysve37610" path="res://Interactables/SlotMachine/SlotMachine.tscn" id="3_i4mlb"]
 [ext_resource type="Script" path="res://Mob/mob_timer.gd" id="4_pcupv"]
 [ext_resource type="PackedScene" uid="uid://ckm00sq1hexvr" path="res://HUD/HUD.tscn" id="5_ukbjb"]
-[ext_resource type="PackedScene" uid="uid://ph7ngk13wr0" path="res://Backgrounds/RealCursedPlains.tscn" id="7_6ghrg"]
+[ext_resource type="PackedScene" path="res://Backgrounds/RealCursedPlains.tscn" id="7_6ghrg"]
 [ext_resource type="Script" path="res://Shaders/vermis_filter.gd" id="7_p80en"]
 
 [sub_resource type="Curve2D" id="Curve2D_jkovw"]
@@ -17,6 +18,7 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_cnpjh")
 mob_scene = ExtResource("2_3dnpp")
+slot_machine_scene = ExtResource("3_i4mlb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
