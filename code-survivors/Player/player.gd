@@ -28,7 +28,6 @@ func connect_to_mobs():
 func collect_gold(amount):
 	gold += amount
 	gold_updated.emit(gold) # Emit the signal with the new total
-	print("Collected gold: ", amount, " Total gold:", gold)
 	
 func process_movement(delta):
 	if not is_dead:
@@ -69,13 +68,11 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		
 		
 		
 	if Input.is_action_just_pressed("slot_1"):  # Make sure to add this input in Project Settings
 		equip_pistol()
-	if Input.is_action_just_pressed("slot_2"):
-		create_explosion()
 
 func equip_pistol():
 	# Remove current weapon if there is one

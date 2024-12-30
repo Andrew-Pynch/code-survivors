@@ -8,20 +8,32 @@ func _init():
 	modifier_type = "hit"
 
 func modify_hit(target, damage) -> Dictionary:
-	# Spawn additional projectiles slightly behind the hit target
-	var spawn_offset = projectile.direction * 100 # Spawn 50 pixels behind the hit point
+	# Schedule the spawning of new projectiles for the next frame
+	call_deferred("_spawn_projectiles", target)
+	
+	return {
+		"damage": damage,
+		"pierce": true  # Allow original projectile to continue
+	}
+
+func _spawn_projectiles(target):
+	# Only proceed if the projectile and target still exist
+	if !is_instance_valid(projectile) or !is_instance_valid(target):
+		return
+		
+	var spawn_offset = projectile.direction * 100 # Spawn 100 pixels behind the hit point
 	
 	for i in range(spawn_count):
 		var new_projectile = projectile.duplicate()
 		var angle = (-spread_angle/2) + (spread_angle/(spawn_count-1)) * i
 		new_projectile.direction = projectile.direction.rotated(angle)
 		new_projectile.source_projectile = projectile
-		projectile.get_tree().root.add_child(new_projectile)
-		# Position the new projectile behind the hit point
-		new_projectile.global_position = target.global_position + spawn_offset
+		
+		# Add the new projectile to the scene tree
+		projectile.get_tree().root.call_deferred("add_child", new_projectile)
+		
+		# Set the position in the next frame
+		new_projectile.call_deferred("set_global_position", target.global_position + spawn_offset)
 	
-	projectile.queue_free()
-	return {
-		"damage": damage,
-		"pierce": true  # Allow original projectile to continue
-	}
+	# Queue the original projectile for deletion
+	projectile.call_deferred("queue_free")

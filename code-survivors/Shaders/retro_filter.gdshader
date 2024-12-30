@@ -23,7 +23,7 @@ float random2(vec2 uv) {
 void fragment() {
     vec2 uv = SCREEN_UV;
     vec4 original = texture(SCREEN_TEXTURE, uv);
-
+ 	COLOR = original;
     // Only process if the pixel is from the tilemap (checking if it's not transparent)
     if (original.a > 0.0) {
         vec4 color = original;
@@ -56,9 +56,7 @@ void fragment() {
         vec3 highlight = vec3(0.8, 0.2, 0.1);
 
         luminance = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-        color.rgb = mix(dark, mid, step(0.3, luminance));
-        color.rgb = mix(color.rgb, highlight, step(0.7, luminance));
-
+       
         COLOR = color;
     } else {
         // If it's not part of the tilemap (transparent), leave it unchanged

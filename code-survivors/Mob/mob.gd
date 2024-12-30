@@ -32,6 +32,8 @@ func _physics_process(delta):
 	if player:
 		var direction = (player.global_position - global_position).normalized()
 		linear_velocity = direction * move_speed
+		
+		$AnimatedSprite2D.flip_h = direction.x < 0
 
 func take_damage(damage):
 	health -= damage

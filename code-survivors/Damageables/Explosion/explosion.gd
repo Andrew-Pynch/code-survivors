@@ -10,8 +10,9 @@ var time_alive = 0
 
 
 func _ready():
+	$AnimatedSprite2D.animation = "explode"
+	$AnimatedSprite2D.play()
 	# Start playing animation if you have one
-	$Sprite2D.show()
 	body_entered.connect(_on_body_entered)
 	
 func _process(delta):
@@ -48,3 +49,7 @@ func _on_body_entered(body):
 		
 		if body.has_method("take_damage"):
 			body.take_damage(round(final_damage))
+			
+# Add this to your existing Explosion.gd
+func _set_explosion_radius(radius: float):
+	$CollisionShape2D.shape.radius = radius

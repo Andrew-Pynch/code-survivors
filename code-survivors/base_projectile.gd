@@ -1,5 +1,4 @@
 extends Area2D
-
 class_name BaseProjectile
 
 # Base properties
@@ -29,7 +28,7 @@ func _ready():
 				"death": death_modifiers.append(child)
 			child.initialize(self)
 
-func _process(delta):
+func _physics_process(delta):
 	# Apply movement modifiers
 	var modified_direction = direction
 	var modified_speed = speed
